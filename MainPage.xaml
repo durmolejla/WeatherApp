@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.MainPage"
+             BackgroundImageSource="pozadina.jpg"
+             Shell.NavBarIsVisible="False">
+    
+ 
+        <StackLayout
+            Orientation="Vertical"
+            HorizontalOptions="Center"
+            Spacing="30"
+            Padding="0,80,0,50">
+            
+
+            <Image
+                Source="icon.png"
+                HeightRequest="260"
+                Aspect="AspectFit"
+                SemanticProperties.Description="Weather App Icon" />
+
+            <Label
+                Text="Weather App"
+                FontSize="40"
+                FontAttributes="Bold"
+                TextColor="White"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+
+            <Button
+                x:Name="StartButton"
+                Text="Start"
+                FontSize="18"
+                TextColor="Black"
+                FontAttributes="Bold"
+                BackgroundColor="White"
+                Clicked="StartButton_Clicked"
+                WidthRequest="170"
+                HeightRequest="50"
+                CornerRadius="25"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+        </StackLayout>
+    
+        
+</ContentPage>

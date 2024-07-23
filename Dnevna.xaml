@@ -1,0 +1,76 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Dnevna"
+             BackgroundImageSource="pozadina.jpg"
+             Shell.NavBarIsVisible="False">
+
+    <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+
+        <!-- Header Section -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Grid.Column="0" />
+            <Label x:Name="LblCity" Text="Sarajevo" Grid.Column="1" TextColor="White" FontSize="24" HorizontalOptions="Center"/>
+            <ImageButton x:Name="SearchIcon" Grid.Column="2" Source="search_icon.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="EndAndExpand" Clicked="SearchIcon_Clicked"/>
+        </Grid>
+
+        <!-- Entry field for city search -->
+        <Entry x:Name="TxtCitySearch"  Placeholder="Enter city name" PlaceholderColor="White" IsVisible="False" Completed="TxtCitySearch_Completed" TextColor="White" FontSize="24" />
+
+        <!-- Current Temperature Section -->
+        <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Spacing="2">
+
+            <Image x:Name="ImgWeatherIcon" Source="sun_icon.png" WidthRequest="120" HeightRequest="120"/>
+            <Label x:Name="LblTemperature" TextColor="White" FontSize="72" HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label x:Name="max" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+                <Label x:Name="min" TextColor="White" FontSize="20" HorizontalOptions="Center" Margin="10,0,0,0"/>
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Hourly Forecast Section -->
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Today" TextColor="White" FontSize="18" HorizontalOptions="Start" Padding="15"/>
+                <Label x:Name="LblDate" Grid.Column="1" TextColor="White" FontSize="18" HorizontalOptions="End" Padding="15"/>
+            </Grid>
+
+            <CollectionView ItemsSource="{Binding HourlyForecasts}" x:Name="Weather">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center" Padding="25">
+                            <Label Text="{Binding Time}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                            <Image Source="{Binding WeatherIcon}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Temperature}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+        </StackLayout>
+
+        <!-- Back Button -->
+        <Button
+            x:Name="Nazad"
+            Text="Nazad"
+            FontSize="18"
+            TextColor="White"
+            Clicked="NazadButton_Clicked"
+            WidthRequest="170"
+            HeightRequest="50"
+            BackgroundColor="#080F43"/>
+    </StackLayout>
+
+</ContentPage>
